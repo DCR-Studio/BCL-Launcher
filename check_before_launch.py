@@ -16,6 +16,9 @@ import logging
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 import requests
+import win32api
+
+
 
 # ==================== 配置日志 ====================
 logging.basicConfig(
@@ -28,7 +31,18 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# ==================== hardware-software-check.py ====================
+# ======================提权=======================
+def administrator():
+    try:
+        testfile = os.path.join(os.getenv('windir'),"get_permission.txt")
+        open(testfile,"w").close()
+    except OSError:
+        return False
+    else:
+        os.remove(testfile)
+        return True
+
+# ==================== 硬件检测 ====================
 
 def get_windows_version():
     """
@@ -98,7 +112,7 @@ def check_hardware_software():
         logger.error("Python not found.")
         sys.exit(1)
 
-# ==================== check-path.py ====================
+# ==================== 路径检测 ====================
 
 def contains_chinese(path):
     """
@@ -119,7 +133,7 @@ def check_path():
     else:
         logger.info("Path check passed.")
 
-# ==================== check-curl.py ====================
+# ==================== CURL检测 ====================
 
 app = FastAPI()
 
@@ -212,16 +226,21 @@ def main():
     logger.info(f"Verification result: {result}")
 
     # 关闭 FastAPI 服务
-    requests.get("http://127.0.0.1:8000/shutdown")
+    #requests.get("http://127.0.0.1:8000/shutdown")
 
 # ==================== 主程序 ====================
+#print(administrator())
+if administrator():
+    logger.info("Successfully get Administrator permission")
+    if __name__ == "__main__":
+        # 1. 检查硬件和软件环境
+        check_hardware_software()
 
-if __name__ == "__main__":
-    # 1. 检查硬件和软件环境
-    check_hardware_software()
+        # 2. 检查路径是否包含中文字符
+        check_path()
 
-    # 2. 检查路径是否包含中文字符
-    check_path()
-
-    # 3. 启动 FastAPI 服务并执行下载和校验
-    main()
+        # 3. 启动 FastAPI 服务并执行下载和校验
+        main()
+else:
+    logger.error("Failed get Administrator permission")
+    win32api.ShellExecute(None,"runas",sys.executable,__file__,None,1)
