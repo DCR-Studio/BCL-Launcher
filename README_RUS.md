@@ -1,6 +1,7 @@
 # BCL-Launcher
 
-[简体中文](REAMDE.md)
+[简体中文](REAMDE.md)  
+[繁體中文](README_ZHTW.md)   
 [English](README_ENG.md)  
 
 ### Инновационный Minecraft-лаунчер с командной строкой: настраиваемый, открытый и ориентированный на пользователя
