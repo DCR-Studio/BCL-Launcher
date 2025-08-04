@@ -1,6 +1,6 @@
 # BCL-Launcher
 
-[繁體中文](README_ZHTW.md)  
+[简体中文](README.md)  
 [English](README_ENG.md)  
 [Русский](README_RUS.md)  
 
