@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- coding: utf-8 -*-
 
 #                Bad Craft Launcher                #
 # Copyright (C) 2025 DCR Studio.All right reserved #
@@ -32,6 +32,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # ======================提权=======================
+# 提权部分在正式发布期间需要注释或删除并在pyinstaller封装时加"--uac"参数
 def administrator():
     try:
         testfile = os.path.join(os.getenv('windir'),"get_permission.txt")

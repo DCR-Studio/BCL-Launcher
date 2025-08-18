@@ -1,6 +1,7 @@
-# Parameter Builder2Launch v1.0
-# (C)2025 DCR Studio.
 # -*- coding: utf-8 -*-
+# Parameter Builder2Launch v1.1
+# Bad Craft Launcher Core Component.
+# (C)2025 DCR Studio.
 
 import os
 import subprocess
@@ -9,6 +10,7 @@ from pathlib import Path
 from datetime import datetime
 import json
 
+# 初始化日志 Initialize log
 now = datetime.now()
 formatted_date = now.strftime("%Y-%m-%d %H-%M-%S")
 
@@ -31,6 +33,7 @@ def detect_main_class(version_dir: Path, version: str) -> str:
         try:
             data = json.loads(version_json.read_text(encoding='utf-8'))
             # 使用arguments.client解析更精确的启动参数，保证声音和语言资源被正确加载
+            # Use <arguments.client> to resolve precise startup paraments to ensure that all game files are loaded normally.
             return data.get('mainClass', 'net.minecraft.client.main.Main')
         except Exception:
             return 'net.minecraft.client.main.Main'
@@ -41,7 +44,7 @@ def build_classpath(game_path: Path, version: str) -> str:
     version_jar = version_dir / f"{version}.jar"
 
     if not version_jar.exists():
-        raise FileNotFoundError(f"版本 JAR 不存在: {version_jar}")
+        raise FileNotFoundError(f"版本 JAR 文件不存在 The version JAR file does not exist: {version_jar}")
 
     jars = [str(j) for j in (game_path / "libraries").rglob("*.jar")]
     jars.append(str(version_jar))
@@ -58,6 +61,7 @@ def get_assets_info(game_path: Path, version: str):
         data = json.loads(version_json.read_text(encoding='utf-8'))
         asset_index = data.get("assetIndex", {})
         # 使用id字段保证对应版本精确调用资源
+        # Use the ID field to ensure precise invocation of the corresponding version's resources.
         assets_index = asset_index.get("id", data.get("assets", "legacy"))
         return str(game_path / "assets"), assets_index
     except Exception:
@@ -80,14 +84,14 @@ def build_minecraft_command(
 
     java_bin = Path(java_path) / "bin" / ("java.exe" if os.name == "nt" else "java")
     if not java_bin.exists():
-        raise FileNotFoundError('Java binary not found')
+        raise FileNotFoundError('找不到Java二进制文件 Java binary not found')
 
     version_dir = Path(game_path) / "versions" / version
     main_class = detect_main_class(version_dir, version)
     cp_string = build_classpath(Path(game_path), version)
 
     assets_dir, assets_index = get_assets_info(Path(game_path), version)
-
+    # 构建一个启动参数列表 Build a list of startup parameters.
     command = [
         str(java_bin),
         f"-Xms{min_mem}M",
@@ -102,8 +106,9 @@ def build_minecraft_command(
         "--accessToken", token,
         "--userType", "offline",
         "--versionType", "BadCraftLauncher",
-        "--assetIndex", assets_index,  # 强制传入assetsIndex
-        "--assetsDir", assets_dir
+        "--assetIndex", assets_index,  # 强制传入assetsIndex，保证文件正常加载
+        "--assetsDir", assets_dir,
+        #"--demo" #以测试版打开(可选)
     ]
 
     logged_command = command.copy()
@@ -122,15 +127,16 @@ try:
         min_mem=2048, # 最小内存
         max_mem=4096, # 最大内存
         java_path=r"D:\JDK\jdk-24.0.2", # 定位到自己的Java文件夹(找到你的java.exe[Win]或者java[Linux/macOS])
-        username="SteveOffline", # 随便取啥名
+        username="SteveOffline", # 符合Minecraft命名规范，不得出现中文，不得出现违规符号如./\-[]()<>?'";:!@#$%^&*+=——，只允许出现_(下划线)符号
         token="0", # 离线用户没有AccessToken
     )
-    logging.info("Successfully build parameter.")
+    logging.info("参数构建成功 Successfully build parameter.")
 except Exception as exc:
     logging.error(f"FAIL: {exc}")
     print(f"FAIL: {exc}")
     cmd = []
 
+# 通过subprocess执行启动命令 Use <subprocess> library to execute the startup command.
 if cmd:
     process = subprocess.Popen(cmd)
     process.wait()
