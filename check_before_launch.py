@@ -17,6 +17,7 @@ from fastapi import FastAPI
 from fastapi.responses import FileResponse
 import requests
 import win32api
+import tempfile
 
 
 
@@ -25,7 +26,7 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
     handlers=[
-        logging.FileHandler("launcher.log"),  # 日志输出到文件
+        logging.FileHandler(f"launch_check.log"),  # 日志输出到文件
         logging.StreamHandler()  # 日志输出到控制台
     ]
 )
@@ -114,7 +115,19 @@ def check_hardware_software():
         sys.exit(1)
 
 # ==================== 路径检测 ====================
-
+def is_in_temp():
+    # 获取当前程序的绝对路径
+    current_file = os.path.abspath(__file__)
+    
+    # 获取系统临时目录路径
+    temp_dir = tempfile.gettempdir()
+    
+    # 判断程序路径是否位于临时目录中
+    try:
+        return os.path.commonpath([current_file, temp_dir]) == temp_dir
+    except ValueError:
+        # 如果路径不在同一个盘符（Windows 下可能出现），直接返回 False
+        return False
 def contains_chinese(path):
     """
     检查路径中是否包含中文字符
@@ -227,21 +240,31 @@ def main():
     logger.info(f"Verification result: {result}")
 
     # 关闭 FastAPI 服务
-    #requests.get("http://127.0.0.1:8000/shutdown")
+    requests.get("http://127.0.0.1:8000/shutdown")
 
 # ==================== 主程序 ====================
 #print(administrator())
-if administrator():
-    logger.info("Successfully get Administrator permission")
-    if __name__ == "__main__":
-        # 1. 检查硬件和软件环境
-        check_hardware_software()
-
-        # 2. 检查路径是否包含中文字符
-        check_path()
-
-        # 3. 启动 FastAPI 服务并执行下载和校验
-        main()
-else:
-    logger.error("Failed get Administrator permission")
-    win32api.ShellExecute(None,"runas",sys.executable,__file__,None,1)
+#if administrator():
+#    logger.info("Successfully get Administrator permission")
+#    if __name__ == "__main__":
+#        check_hardware_software()
+#
+#        if is_in_temp==False:
+#            logger.info("IS NOT IN TEMP CHECK PASS")
+#        elif is_in_temp==True:
+#            logger.error("IS NOT IN TEMP CHECK FAIL")
+#        check_path()
+#
+#        main()
+#else:
+#    logger.error("Failed get Administrator permission")
+#    win32api.ShellExecute(None,"runas",sys.executable,__file__,None,1)
+if __name__ == "__main__":
+    check_hardware_software()
+    logger.info(f"Program in temp folder:{is_in_temp()}")
+    if is_in_temp==False:
+        logger.info('PITCheck Pass')
+    if is_in_temp==True:
+        logger.error('PITCheck FAIL')
+    check_path()
+    main()

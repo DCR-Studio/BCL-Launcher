@@ -15,6 +15,7 @@
 
 ## ❓ BCL Launcher 是什么？
 **BCL Launcher**（全称 **Bad Craft Launcher**），是由 [DCR Studio[↗]](https://github.com/DCR-Studio) 开发的 **轻量化、可定制的 Minecraft 启动器**，秉持「以用户为中心」的理念。  
+欢迎访问我们的官方网站：[BCL官方网站[↗]](https://launcher.dcrstudio.top/zh_cn.html)(暂未开放)
 
 - 使用 **Rust + Python** 混合编写  
 - 我们提供 **完全 Rust 编写的内核** [HyperLightBCLCore[↗]](https://github.com/DCR-Studio/OpenBCLCore)  
@@ -125,7 +126,17 @@ pip install -r requirements.txt
 cargo build --release
 python main.py
 ```  
+---
+## 🌟 鸣谢
+感谢以下为本项目做出贡献的开发者：  
 
+[Stelle0427](https://github.com/Stelle0427) - 提供了 MSLogin 的关键支持，并担任 BCL 开发工作的主要负责人  
+
+[TNTyep520](https://github.com/TNTyep520) - 为代码提供改进、优化  
+
+[GoldenHoe](https://github.com/GoldenHoe) - 提供了部分核心代码，并完成了大部分文档编写  
+
+项目图标来源于 [App Icon Forge[↗]](https://zhangyu1818.github.io/appicon-forge/)
 ## 📜 版权与开源协议
 
 BCL Launcher 由 **DCR Studio** 开发，版权所有 ©2025 DCR Studio。  保留所有权利。
