@@ -138,13 +138,13 @@ python main.py
 ## 🌟 鳴謝
 感謝以下為本專案做出貢獻的開發者：
 
-[Stelle0427](https://github.com/Stelle0427) - 提供了 MSLogin 的關鍵支援，並擔任 BCL 開發工作的主要負責人  
+[Stelle0427[↗]](https://github.com/Stelle0427) - 提供了 MSLogin 的關鍵支援，並擔任 BCL 開發工作的主要負責人  
 
-[TNTyep520](https://github.com/TNTyep520) - 對程式碼進行改進與優化  
+[TNTyep520[↗]](https://github.com/TNTyep520) - 對程式碼進行改進與優化  
 
-[GoldenHoe](https://github.com/GoldenHoe) - 提供了部分核心程式碼，並完成了大部分文件編寫  
+[GoldenHoe[↗]](https://github.com/GoldenHoe) - 提供了部分核心程式碼，並完成了大部分文件編寫  
 
-專案圖示來源於 [App Icon Forge[↗]](https://zhangyu1818.github.io/appicon-forge/)
+[EFP](#) - 為專案設計了圖示
 ## 📜 版權與開源協議
 
 BCL Launcher 由 **DCR Studio** 開發，版權所有 ©2025 DCR Studio。保留所有權利。
