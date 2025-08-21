@@ -4,11 +4,10 @@
   <img src="./assets/logo.svg" alt="BCL-Launcher Logo" width="150">
 </p>
 
-<div style="text-align: center; margin: 10px 0;">
-  <a href="/docs/README_ZHTW.md" style="margin: 0 15px;">繁體中文</a>
-  <a href="/docs/README_ENG.md" style="margin: 0 15px;">English</a>
-  <a href="../README.md" style="margin: 0 15px;">简体中文</a>
-</div>
+<p align="center">
+  <b><a href="../README.md">简体中文</a> | <a href="README_ENG.md">English</a> | <a href="README_ZHTW.md">繁體中文</a></b>
+</p>
+
 
 <h3 align="center">Лёгкий · Настраиваемый · Открытый · Ориентированный на пользователя Minecraft Launcher</h3>
 

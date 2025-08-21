@@ -4,11 +4,10 @@
   <img src="./docs/assets/logo.svg" alt="BCL-Launcher Logo" width="150">
 </p>
 
-<div style="text-align: center; margin: 10px 0;">
-  <a href="./docs/README_ZHTW.md" style="margin: 0 15px;">繁體中文</a>
-  <a href="./docs/README_ENG.md" style="margin: 0 15px;">English</a>
-  <a href="./docs/README_RUS.md" style="margin: 0 15px;">Русский</a>
-</div>
+<p align="center">
+  <b><a href="./docs/README_ZHTW.md">繁體中文</a> | <a href="./docs/README_ENG.md">English</a> | <a href="./docs/README_RUS.md">Русский</a></b>
+</p>
+
 
 <h3 align="center">轻量化 · 可定制 · 开放 · 以用户为中心的 Minecraft 启动器</h3>
 
