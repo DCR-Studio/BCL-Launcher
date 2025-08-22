@@ -151,7 +151,6 @@ Thanks to the following developers for their contributions to this project:
 
 [GoldenHoe](https://github.com/GoldenHoe) - Provided part of the core code and authored most of the documentation
 
-[EFP](#) - Designed the icon for the project
 ## 📜 Copyright & Open Source License
 
 BCL Launcher is developed by **DCR Studio**, ©2025 DCR Studio. All rights reserved.

@@ -136,7 +136,6 @@ python main.py
 
 [GoldenHoe](https://github.com/GoldenHoe) - 提供了部分核心代码，并完成了大部分文档编写  
 
-[EFP](#) - 为项目提供了图标
 ## 📜 版权与开源协议
 
 BCL Launcher 由 **DCR Studio** 开发，版权所有 ©2025 DCR Studio。  保留所有权利。
