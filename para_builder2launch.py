@@ -105,7 +105,7 @@ def build_minecraft_command(
         "--uuid", "00000000-0000-0000-0000-000000000000",
         "--accessToken", token,
         "--userType", "offline",
-        "--versionType", "BadCraftLauncher",
+        "--versionType", "Bad Craft Launcher",
         "--assetIndex", assets_index,  # 强制传入assetsIndex，保证文件正常加载
         "--assetsDir", assets_dir,
         #"--demo" #以测试版打开(可选)
@@ -121,12 +121,12 @@ def build_minecraft_command(
 
 try:
     cmd = build_minecraft_command(
-        game_path=r"D:\BCL_Testmc\.minecraft", # 开发人员需要将其更换为自己的具体的.minecraft的路径，注意不是.minecraft/.minecraft
-        version="1.14.4", # 你是什么版本你就填什么
+        game_path=r"/home/TNTyep520/.minecraft", # 开发人员需要将其更换为自己的具体的.minecraft的路径，注意不是.minecraft/.minecraft
+        version="1.16.5", # 你是什么版本你就填什么
         use_modloader=False, # 现在没有模组加载器的支持，开发人员请使用原版测试
         min_mem=2048, # 最小内存
         max_mem=4096, # 最大内存
-        java_path=r"D:\JDK\jdk-24.0.2", # 定位到自己的Java文件夹(找到你的java.exe[Win]或者java[Linux/macOS])
+        java_path=r"/usr/lib/jvm/java-11-openjdk", # 定位到自己的Java文件夹(找到你的java.exe[Win]或者java[Linux/macOS])
         username="SteveOffline", # 符合Minecraft命名规范，不得出现中文，不得出现违规符号如./\-[]()<>?'";:!@#$%^&*+=——，只允许出现_(下划线)符号
         token="0", # 离线用户没有AccessToken
     )
