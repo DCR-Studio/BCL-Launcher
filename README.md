@@ -1,3 +1,10 @@
+### BCL-Launcher 已归档, 项目已迁移, 此项目的源代码已抛弃, [>>> Bad-Craft-Launcher](https://github.com/Bad-Craft-Launcher/Bad-Craft-Launcher)
+
+<details>
+
+<summary>原 README.md 内容, 其他多语言的 README 均以此归档说明为例</summary>
+
+
 <h1 align="center">BCL Launcher</h1>
 
 <p align="center">
