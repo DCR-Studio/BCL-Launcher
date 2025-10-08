@@ -145,7 +145,7 @@ python main.py
 
 ## 📜 版权与开源协议
 
-BCL Launcher 由 **DCR Studio** 开发，版权所有 ©2025 DCR Studio。  保留所有权利。
+BCL Launcher 由 **DCR Studio** 开发，版权所有 ©2025 DCR Studio, 保留部分权利
 
 本项目使用 **GPL-3.0** 开源协议，任何人均可在遵循协议条款的前提下使用、修改和分发本软件。  
 详细协议内容请参见 [LICENSE[↗]](./LICENSE) 文件。
